@@ -1,18 +1,28 @@
 /*global BackboneApp2, $*/
 
 
-window.BackboneApp2 = {
-    Models: {},
-    Collections: {},
-    Views: {},
-    Routers: {},
-    init: function () {
-        'use strict';
-        console.log('Hello from Backbone!');
-    }
+var PlaylistApp = new Marionette.Application();
+
+PlaylistApp.addRegions({
+  headerRegion: "#header-region",
+  searchBoxRegion: "#searchBoxRegion",
+  dialogRegion: Marionette.Region.Dialog.extend({
+    el: "#dialog-region"
+  })
+});
+
+PlaylistApp.navigate = function(route,  options){
+  options || (options = {});
+  Backbone.history.navigate(route, options);
 };
 
-$(document).ready(function () {
-    'use strict';
-    BackboneApp2.init();
+PlaylistApp.getCurrentRoute = function(){
+  return Backbone.history.fragment
+};
+
+PlaylistApp.on("initialize:after", function(){
+  if(Backbone.history){
+    Backbone.history.start();
+
+  }
 });
