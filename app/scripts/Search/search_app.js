@@ -1,10 +1,10 @@
 (function() {
-    App.module('Search', function (Search, App, Backbone, Marionette, $, _) {
+    PlaylistApp.module('Search', function (Search, App, Backbone, Marionette, $, _) {
         // can start with: App.Example.start()
-
+        var controller;
         Search.Router = Backbone.Marionette.AppRouter.extend({
              appRoutes: {
-                 "search(/)": "search"
+                 "search(/)": "show"
              }
         });
 
@@ -12,7 +12,7 @@
         // the same api call
         var API = {
             show: function (options) {
-                Search.Controller.initialize();
+
             }
         };
 
@@ -29,7 +29,7 @@
         });
 
         Search.on("start", function(){
-          API.show();
+          controller = new Search.Controller()
         });
     });
 })(this);
