@@ -13,8 +13,8 @@
                 var searchList = this.showSearchList({collection : searchResults});
 
                 this.listenTo(searchBox, 'search:requested',function(ev){
-                    var query = jQuery(ev.currentTarget);
-                    searchResults.find(query);
+                    var query = ev.view.ui.$input.val();
+                    searchResults.search(query);
                 });
              },
 

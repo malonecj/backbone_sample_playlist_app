@@ -7,8 +7,12 @@
 
              template : '#search-box-tmpl',
 
+             ui : {
+                $input : 'input[type=search]'
+             },
+
              triggers : {
-                'change input.type=["search"]' : 'query:request'
+                'change input[type=search]' : 'search:requested'
              }
 
         });

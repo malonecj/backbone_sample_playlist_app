@@ -8,7 +8,7 @@
              template : '#search-box-tmpl',
 
              triggers : {
-                'change input.type=["search"]' : 'query:request'
+                'change input[type=search]' : 'query:request'
              }
 
         });
