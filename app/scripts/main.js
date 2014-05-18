@@ -5,10 +5,8 @@ var PlaylistApp = new Marionette.Application();
 
 PlaylistApp.addRegions({
   headerRegion: "#header-region",
-  searchBoxRegion: "#searchBoxRegion",
-  dialogRegion: Marionette.Region.Dialog.extend({
-    el: "#dialog-region"
-  })
+  mainRegion : "#mainRegion",
+  searchBoxRegion : '#searchBoxRegion'
 });
 
 PlaylistApp.navigate = function(route,  options){

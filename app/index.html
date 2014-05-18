@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>BackboneApp2</title>
+        <title>TuneFish</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -13,66 +13,74 @@
         <!-- build:js scripts/vendor/modernizr.js -->
         <script src="bower_components/modernizr/modernizr.js"></script>
         <!-- endbuild -->
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <!--[if lt IE 10]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
 
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand logo" href="#">TuneFish </a>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                        <div class="col-sm-6 col-md-6">
+                            <form class="navbar-form" id="searchBoxRegion" role="search" method="get" name="search-form">
 
-        <div class="container">
-            <div class="header">
-                <ul class="nav nav-pills pull-right">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <h3 class="text-muted">BackboneApp2</h3>
-            </div>
-
-            <div id="searchBoxRegion">
-
-            </div>
-
-
-            <div class="row text-left">
-                <div class="col-md-offset-4">
-                    <h2>Now Try,</h2>
-                    <h4><b>yo backbone:router</b> &lt;router&gt;</h4>
-                    <h4><b>yo backbone:collection</b> &lt;collection&gt;</h4>
-                    <h4><b>yo backbone:model </b> &lt;model&gt;</h4>
-                    <h4><b>yo backbone:view </b> &lt;view&gt;</h4>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3"></div>
                 </div>
             </div>
+        </nav>
 
-            <div class="row marketing">
-                <div class="col-lg-6">
-                    <h4>HTML5 Boilerplate</h4>
-                    <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 col-sm-3 sidebar">
+                    <div class="list-group">
+                        <li class="list-group-item active"><a href="#"> <i class="fa fa-headphones"></i> Listen Now</a></li>
 
-                    <h4>Bootstrap</h4>
-                    <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-
-                    <h4>Modernizr</h4>
-                    <p>Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.</p>
-
+                    </div>
+                    <hr>
+                    <div class="list-group">
+                        <span href="#" class="list-group-item active">
+                            PlayLists
+                            <span class="pull-right" id="slide-submenu">
+                                <i class="fa fa-plus-square"></i>
+                            </span>
+                        </span>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-thumbs-o-up"></i> Favourites
+                            <span class="badge">0</span>
+                        </a>
+                        <a href="#" class="list-group-item">
+                            <i class="fa fa-history"></i> Song Queue
+                            <span class="badge">0</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <h4>Backbone.js</h4>
-                    <p>Backbone.js gives structure to web applications by providing models, collections, views and connects it all to your existing API over a RESTful JSON interface.</p>
+                <div class="col-md-10 col-md-offset-2 main">
+                    <div id="mainRegion">
 
-                    <h4>Underscore.js</h4>
-                    <p>Underscore.js is a utility-belt library for JavaScript that provides a lot of the functional programming support</p>
+                    </div>
 
+                    <div class="footer">
 
+                    </div>
                 </div>
             </div>
-
-            <div class="footer">
-                <p>♥ from the Yeoman team</p>
-            </div>
-
         </div>
+
 
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
@@ -89,8 +97,10 @@
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/underscore/underscore.js"></script>
         <script src="bower_components/backbone/backbone.js"></script>
-        <!-- endbuild -->
+        <script src="bower_components/handlebars/handlebars.js"></script>
         <script src="bower_components/marionette/lib/backbone.marionette.js"></script>
+        <!-- endbuild -->
+
         <!-- build:js scripts/plugins.js -->
         <script src="bower_components/sass-bootstrap/js/affix.js"></script>
         <script src="bower_components/sass-bootstrap/js/alert.js"></script>
@@ -108,14 +118,92 @@
 
         <!-- build:js({.tmp,app}) scripts/main.js -->
         <script src="scripts/main.js"></script>
+        <script src="scripts/Shared/mixins.js"></script>
+        <script src="scripts/Entities/album.js"></script>
+        <script src="scripts/Entities/artist.js"></script>
+        <script src="scripts/Entities/imageEmbed.js"></script>
+        <script src="scripts/Entities/artistCollection.js"></script>
+         <script src="scripts/Entities/trackCollection.js"></script>
+        <script src="scripts/Search/views/search_box_view.js"></script>
+        <script src="scripts/Search/views/search_list_view.js"></script>
+        <script src="scripts/Search/views/search_layout.js"></script>
+        <script src="scripts/Search/views/song_list.js"></script>
+        <script src="scripts/Search/search_app.js"></script>
+        <script src="scripts/Search/search_controller.js"></script>
+        <script src="scripts/Shared/views/loader_view.js"></script>
+
         <script src="scripts/templates.js"></script>
+
         <script id="search-box-tmpl" type="text/x-handlebars-template">
-            <div class="jumbotron">
-                <h1>'Allo, 'Allo!</h1>
-                <p class="lead">Always a pleasure scaffolding your apps.</p>
-                <p><a class="btn btn-lg btn-success" href="#">Splendid!</a></p>
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Search for songs, artists or albums">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-success">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </div>
             </div>
         </script>
+
+        <script id="search-artist-item-tmpl" type="text/x-handlebars-template">
+                <a href="#" class="thumbnail">
+                    <img data-src="" alt="..." class="img-circle js-artist-img">
+                </a>
+                <div class="caption">
+                    <h5>{{name}}</h5>
+                </div>
+        </script>
+
+        <script id="search-artist-list-tmpl" type="text/x-handlebars-template">
+            <h3><span class="label label-default">Artists</span></h3>
+            <div class='row'></div>
+        </script>
+
+        <script id="track-item-tmpl" type="text/x-handlebars-template">
+                <td>{{track-number}}</td><td>{{name}}</td><td>{{songLength length}}</td><td><i class="fa fa-star-o"></i></td>
+        </script>
+
+        <script id="track-list-tmpl" type="text/x-handlebars-template">
+        <div class="row">
+
+              <a class="col-xs-4 col-md-1" href="#">
+                <img class="thumbnail" src="..." alt="...">
+              </a>
+              <h4 class="media-heading">{{name}}</h4>
+
+            <table class="table table-striped">
+            <thead><tr><th></th><th>Name</th><th><i class="fa fa-clock-o"></i></th><th><th></tr></thead>
+                <tbody></tbody>
+            </table>
+            </div>
+            <hr>
+        </script>
+
+
+        <script id="track-container-tmpl" type="text/x-handlebars-template">
+                <h3><span class="label label-default">Tracks</span></h3>
+        </script>
+
+        <script id="search-layout-tmpl" type="text/x-handlebars-template">
+            <div id="artistListRegion"></div>
+            <div id="trackListRegion"></div>
+        </script>
+
+         <script id="loader-tmpl" type="text/x-handlebars-template">
+         <div class="row">
+         <div class="col-md-4"></div>
+            <div class="col-md-4"><i class="fa fa-cog fa-5x fa-spin"></i></div>
+             <div class="col-md-4"></div>
+         </div>
+        </script>
+
         <!-- endbuild -->
+
+        <script>
+            Backbone.Marionette.TemplateCache.prototype.compileTemplate = function(rawTemplate) {
+                return Handlebars.compile(rawTemplate);
+            };
+            PlaylistApp.start();
+        </script>
 </body>
 </html>

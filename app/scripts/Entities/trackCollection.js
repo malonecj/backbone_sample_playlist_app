@@ -25,6 +25,13 @@
                 this.reset(response.tracks);
                 //meta data about search query
                 this.info = response.info;
+            },
+
+            getValidTracksByTerritory: function(countryCode) {
+                this.set(this.filter(function(t) {
+                    return t.get('album').availability.territories.indexOf(countryCode) > -1;
+                }));
+                return this;
             }
         })
 
