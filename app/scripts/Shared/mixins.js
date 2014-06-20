@@ -3,7 +3,7 @@
 
         Mixins.Api = {
 
-            searchUrlRoot: 'http://ws.spotify.com/search/1/',
+            searchUrlRoot: 'https://api.spotify.com/v1/search/',
 
             validateQuery: function(itemToQuery) {
                 if (!(itemToQuery === 'artist' || itemToQuery === 'album' || itemToQuery === 'track')) {
@@ -17,13 +17,7 @@
                 if(!this.validateQuery(itemToQuery)){
                   throw "Metadata API must query either an artist, album or track";
                 }
-                var url = this.searchUrlRoot + itemToQuery;
-                //return json by default
-                if (!(options && options.format === 'xml')) {
-                    url += '.json';
-                }
-                //append search text to url
-                url += '?q=' + searchText;
+                var url = this.searchUrlRoot + '?q=' + searchText + "&type=" + itemToQuery;
                 var jqxhr = $.ajax(url)
                     .done(callback)
                     .fail(function() {

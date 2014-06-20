@@ -17,20 +17,12 @@
         <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+        <div id="header">
+            <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
-
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand logo" href="#">TuneFish </a>
-                        </div>
                     </div>
                     <div class="collapse navbar-collapse navbar-ex1-collapse">
                         <div class="col-sm-6 col-md-6">
@@ -43,42 +35,21 @@
                 </div>
             </div>
         </nav>
-
+        </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-2 col-sm-3 sidebar">
-                    <div class="list-group">
-                        <li class="list-group-item active"><a href="#"> <i class="fa fa-headphones"></i> Listen Now</a></li>
+                <div id="sidebarRegion">
 
-                    </div>
-                    <hr>
-                    <div class="list-group">
-                        <span href="#" class="list-group-item active">
-                            PlayLists
-                            <span class="pull-right" id="slide-submenu">
-                                <i class="fa fa-plus-square"></i>
-                            </span>
-                        </span>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-thumbs-o-up"></i> Favourites
-                            <span class="badge">0</span>
-                        </a>
-                        <a href="#" class="list-group-item">
-                            <i class="fa fa-history"></i> Song Queue
-                            <span class="badge">0</span>
-                        </a>
-                    </div>
                 </div>
-                <div class="col-md-10 col-md-offset-2 main">
+                <div class="col-md-9 col-md-offset-3 main">
                     <div id="mainRegion">
-
-                    </div>
-
-                    <div class="footer">
 
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="footer">
+
         </div>
 
 
@@ -117,22 +88,30 @@
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/main.js -->
-        <script src="scripts/main.js"></script>
+        <script src="scripts/app.js"></script>
         <script src="scripts/Shared/mixins.js"></script>
         <script src="scripts/Entities/album.js"></script>
         <script src="scripts/Entities/artist.js"></script>
         <script src="scripts/Entities/imageEmbed.js"></script>
         <script src="scripts/Entities/artistCollection.js"></script>
-         <script src="scripts/Entities/trackCollection.js"></script>
+        <script src="scripts/Entities/trackCollection.js"></script>
         <script src="scripts/Search/views/search_box_view.js"></script>
-        <script src="scripts/Search/views/search_list_view.js"></script>
-        <script src="scripts/Search/views/search_layout.js"></script>
-        <script src="scripts/Search/views/song_list.js"></script>
         <script src="scripts/Search/search_app.js"></script>
         <script src="scripts/Search/search_controller.js"></script>
         <script src="scripts/Shared/views/loader_view.js"></script>
+        <script src="scripts/Display/views/artist_list.js"></script>
+        <script src="scripts/Display/views/layout.js"></script>
 
+        <script src="scripts/Display/views/song_list.js"></script>
+                  <script src="scripts/Display/views/album_list.js"></script>
+        <script src="scripts/Display/display_app.js"></script>
+        <script src="scripts/Display/display_controller.js"></script>
+        <script src="scripts/Sidebar/views/layout.js"></script>
+         <script src="scripts/Sidebar/views/now_playing.js"></script>
+        <script src="scripts/Sidebar/sidebar_controller.js"></script>
+        <script src="scripts/Sidebar/sidebar_app.js"></script>
         <script src="scripts/templates.js"></script>
+
 
         <script id="search-box-tmpl" type="text/x-handlebars-template">
             <div class="input-group">
@@ -145,11 +124,29 @@
             </div>
         </script>
 
+        <script id="sidebar-tmpl" type="text/x-handlebars-template">
+                <div class="col-md-3 col-sm-3 sidebar">
+
+                    <div class="list-group">
+
+                    </div>
+                    <div id="nowPlayingRegion" class="col-md-12"/>
+                    <hr>
+
+                </div>
+        </script>
+
+        <script id="now-playing-tmpl">
+        <li class="list-group-item"><img width="100%" height="100%"/></li>
+        <li class="list-group-item" style="text-align:center"><a href="#"> <i class="fa fa-headphones"></i> Now Playing : {{name}}</a></li>
+        <li class="list-group-item " style="text-align:center"><i class="fa fa-play-circle fa-2x"></i></li>
+        </script>
+
         <script id="search-artist-item-tmpl" type="text/x-handlebars-template">
                 <a href="#" class="thumbnail">
-                    <img data-src="" alt="..." class="img-circle js-artist-img">
+                    <img data-src="" alt="..." class="js-artist-img">
                 </a>
-                <div class="caption">
+                <div class="caption" style="text-align:center">
                     <h5>{{name}}</h5>
                 </div>
         </script>
@@ -160,7 +157,7 @@
         </script>
 
         <script id="track-item-tmpl" type="text/x-handlebars-template">
-                <td>{{track-number}}</td><td>{{name}}</td><td>{{songLength length}}</td><td><i class="fa fa-star-o"></i></td>
+                <td>{{track_number}}</td><td>{{name}}</td><td>{{songLength duration_ms}}</td><td><i class="fa fa-star-o"></i></td>
         </script>
 
         <script id="track-list-tmpl" type="text/x-handlebars-template">
@@ -180,11 +177,11 @@
         </script>
 
 
-        <script id="track-container-tmpl" type="text/x-handlebars-template">
+        <script id="album-container-tmpl" type="text/x-handlebars-template">
                 <h3><span class="label label-default">Tracks</span></h3>
         </script>
 
-        <script id="search-layout-tmpl" type="text/x-handlebars-template">
+        <script id="display-layout-tmpl" type="text/x-handlebars-template">
             <div id="artistListRegion"></div>
             <div id="trackListRegion"></div>
         </script>

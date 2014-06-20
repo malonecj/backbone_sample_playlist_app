@@ -99,7 +99,6 @@ body {
 }
 body {
     padding-top: 70px;
-        background-image: url('../images/nice_snow.png');
     background-repeat: repeat;
     background-position: top left;
 }
@@ -171,4 +170,8 @@ body {
 .nav-sidebar > .active > a {
     color: #fff;
     background-color: #428bca;
+}
+
+.label-default{
+    background-color : rgb(251, 133, 33)
 }

@@ -3,6 +3,8 @@
 
         Entities.ArtistCollection = Backbone.Collection.extend(
 
+            //use underscore extend function to extend artist properties/methods
+            //with those of Mixin.A
             _.extend({}, App.Shared.Mixins.Api, {
 
                 model: Entities.Artist,

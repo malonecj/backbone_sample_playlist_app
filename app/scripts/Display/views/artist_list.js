@@ -1,5 +1,5 @@
 (function() {
-    PlaylistApp.module('Search.Views', function (Views, App, Backbone, Marionette, $, _) {
+    PlaylistApp.module('Display.Views', function (Views, App, Backbone, Marionette, $, _) {
 
         Views.ArtistItem = Backbone.Marionette.ItemView.extend({
 
@@ -14,23 +14,19 @@
              },
 
              onRender : function(){
-                var artistLookupKey = this.model.get('href');
-                var embed = new App.Entities.ImageEmbed();
-                embed.getImageDetails(artistLookupKey, this.showThumbnail.bind(this));
+                //find appropriate image for this artist model
+                var images = this.model.get('images');
+                var thumbnail = _.last(_.sortBy(images, 'width'));
+                this.showThumbnail(thumbnail);
              },
 
-             showThumbnail : function(embedDetails){
-                var src = embedDetails.get('thumbnail_url').replace('cover', 300);;
-                this.ui.$artistImage.prop('src', src);
+             showThumbnail : function(thumbnail){
+                this.ui.$artistImage.prop('src', thumbnail.url);
              }
 
         });
 
         Views.ArtistList = Backbone.Marionette.CompositeView.extend({
-
-             initialize : function(){
-                this.listenTo(this.collection, 'reset', this.render);
-             },
 
              itemView : Views.ArtistItem,
 
