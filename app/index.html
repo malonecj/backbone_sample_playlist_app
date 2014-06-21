@@ -162,7 +162,7 @@
         </script>
 
         <script id="track-item-tmpl" type="text/x-handlebars-template">
-                <td>{{track_number}}</td><td>{{name}}</td><td>{{songLength duration_ms}}</td><td><i class="fa fa-star-o"></i></td>
+                <td>{{track_number}}</td><td><i class="fa fa-play-circle-o fa-2x"></i></td><td>{{name}}</td><td>{{songLength duration_ms}}</td><td><i class="fa fa-star-o"></i></td>
         </script>
 
         <script id="track-list-tmpl" type="text/x-handlebars-template">
@@ -172,13 +172,17 @@
                 <img class="thumbnail" src="..." alt="...">
               </a>
               <h4 class="media-heading">{{name}}</h4>
-
-            <table class="table table-striped">
-            <thead><tr><th></th><th>Name</th><th><i class="fa fa-clock-o"></i></th><th><th></tr></thead>
-                <tbody></tbody>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-striped table-hover">
+            <thead ><tr><th></th><th></th><th>Name</th><th><i class="fa fa-clock-o"></i></th></tr></thead>
+                <tbody class="track-list"></tbody>
             </table>
             </div>
             <hr>
+            </div>
+        </div>
         </script>
 
 

@@ -9,6 +9,8 @@
 
             tagName: 'tr',
 
+            className : 'clickable',
+
             template: '#track-item-tmpl'
 
         });

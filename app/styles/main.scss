@@ -175,3 +175,11 @@ body {
 .label-default{
     background-color : rgb(251, 133, 33)
 }
+
+tbody.track-list tr td .fa-play-circle-o{
+    display: none;
+}
+
+tbody.track-list tr:hover td .fa-play-circle-o{
+    display: block;
+}
