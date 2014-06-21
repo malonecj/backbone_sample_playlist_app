@@ -51,5 +51,13 @@
             return minutes + ':' + seconds;
         });
 
+        Handlebars.registerHelper('getArtistName', function(artists){
+            if(artists && artists.length > 0){
+                return artists[0].name
+            }
+        });
+
+
+
     });
 })(this);

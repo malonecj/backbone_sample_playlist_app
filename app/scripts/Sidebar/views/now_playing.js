@@ -6,20 +6,32 @@
              template : '#now-playing-tmpl',
 
              ui :{
-              image : 'img'
+              image : 'img',
+              musicSource : 'source'
              },
+
 
              initialize : function(){
                 this.listenTo(this.model, 'change', this.render, this);
              },
 
              onRender : function(){
-              var album = this.model.get('album');
-              if(album){
-                var image = album.images[0];
-                this.ui.image.prop('src',image.url);
+                this.loadAlbumImage();
+                this.loadTrackPreview();
+              },
+
+              loadAlbumImage : function(){
+                var album = this.model.get('album');
+                if(album){
+                  var image = album.images[0];
+                  this.ui.image.prop('src',image.url);
+                }
+              },
+
+              loadTrackPreview : function(){
+                  var previewUrl = this.model.get('preview_url');
+                  this.ui.musicSource.prop('src', previewUrl);
               }
-             }
 
         });
 
