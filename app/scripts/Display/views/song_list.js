@@ -7,6 +7,14 @@
 
             },
 
+            events : {
+                'click' : 'onTrackClicked'
+            },
+
+            onTrackClicked : function(event){
+                App.vent.trigger("track:selected", this.model);
+            },
+
             tagName: 'tr',
 
             className : 'clickable',
@@ -21,6 +29,10 @@
 
             ui :{
                 $albumImage : 'img'
+            },
+
+            events : {
+                'click tr' : 'playTrack'
             },
 
             itemView: Views.TrackItem,

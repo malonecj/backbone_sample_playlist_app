@@ -6,6 +6,8 @@
 
         Sidebar.on('start', function(){
             controller = new Sidebar.Controller();
+
+
         });
 
 

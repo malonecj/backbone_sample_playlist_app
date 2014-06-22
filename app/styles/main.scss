@@ -177,9 +177,9 @@ body {
 }
 
 tbody.track-list tr td .fa-play-circle-o{
-    display: none;
+    visibility:hidden;
 }
 
 tbody.track-list tr:hover td .fa-play-circle-o{
-    display: block;
+    visibility:visible;
 }

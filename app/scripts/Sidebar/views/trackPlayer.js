@@ -1,13 +1,14 @@
 (function() {
     PlaylistApp.module('Sidebar.Views', function (Views, App, Backbone, Marionette, $, _) {
 
-        Views.NowPlaying = Backbone.Marionette.ItemView.extend({
+        Views.TrackPlayer = Backbone.Marionette.ItemView.extend({
 
              template : '#now-playing-tmpl',
 
              ui :{
               image : 'img',
-              musicSource : 'source'
+              musicSource : 'source',
+              player : 'audio'
              },
 
 
@@ -31,6 +32,10 @@
               loadTrackPreview : function(){
                   var previewUrl = this.model.get('preview_url');
                   this.ui.musicSource.prop('src', previewUrl);
+              },
+
+              play : function(){
+                this.ui.player[0].play();
               }
 
         });
