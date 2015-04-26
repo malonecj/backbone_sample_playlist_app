@@ -9,8 +9,20 @@
                 $input : 'input[type=search]'
              },
 
+             events : {
+                "keyup input" : "keyPressEventHandler"
+             },
+
+
              triggers : {
-                'change input[type=search]' : 'search:requested'
+                'change input' : 'search:requested',
+                'click a.btn' : 'search:requested'
+             },
+
+             keyPressEventHandler :function(event){
+                if(event.keyCode == 13){
+                    this.trigger('search:requested', {view : this});
+                }
              }
 
         });
