@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Backbone Playlist App/title>
+        <title>Backbone Playlist App</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -11,7 +11,7 @@
         <script src="scripts/vendor/a52a8685.modernizr.js"></script>
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
-    </title></head>
+    </head>
     <body>
 
         <div id="header">
@@ -67,7 +67,125 @@
 
         <script src="scripts/aaf74903.plugins.js"></script>
 
-        <script src="scripts/5ed6954f.main.js"></script>
+
+        <script src="scripts/app.js"></script>
+        <script src="scripts/Shared/mixins.js"></script>
+        <script src="scripts/Entities/album.js"></script>
+        <script src="scripts/Entities/artist.js"></script>
+        <script src="scripts/Entities/imageEmbed.js"></script>
+        <script src="scripts/Entities/artistCollection.js"></script>
+        <script src="scripts/Entities/trackCollection.js"></script>
+        <script src="scripts/Search/views/search_box_view.js"></script>
+        <script src="scripts/Search/search_app.js"></script>
+        <script src="scripts/Search/search_controller.js"></script>
+        <script src="scripts/Shared/views/loader_view.js"></script>
+        <script src="scripts/Display/views/artist_list.js"></script>
+        <script src="scripts/Display/views/layout.js"></script>
+
+        <script src="scripts/Display/views/song_list.js"></script>
+                  <script src="scripts/Display/views/album_list.js"></script>
+        <script src="scripts/Display/display_app.js"></script>
+        <script src="scripts/Display/display_controller.js"></script>
+        <script src="scripts/Sidebar/views/layout.js"></script>
+         <script src="scripts/Sidebar/views/trackPlayer.js"></script>
+        <script src="scripts/Sidebar/sidebar_controller.js"></script>
+        <script src="scripts/Sidebar/sidebar_app.js"></script>
+        <script src="scripts/templates.js"></script>
+
+
+        <script id="search-box-tmpl" type="text/x-handlebars-template">
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Search for songs, artists or albums">
+                <div class="input-group-btn">
+                    <a class="btn btn-success">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </a>
+                </div>
+            </div>
+        </script>
+
+        <script id="sidebar-tmpl" type="text/x-handlebars-template">
+                <div class="col-md-3 col-sm-3 sidebar">
+
+                    <div class="list-group">
+
+                    </div>
+                    <div id="nowPlayingRegion" class="col-md-12"/>
+                    <hr>
+
+                </div>
+        </script>
+
+        <script id="now-playing-tmpl" type="text/x-handlebars-template">
+        <li class="list-group-item"><img width="100%" height="100%"></img></li>
+        <li class="list-group-item" style="text-align:center"><a href="#"> <i class="fa fa-headphones"></i> {{getArtistName artists}} : {{name}}</a></li>
+        <li class="list-group-item " style="text-align:center">
+          <audio controls style="width:100%">
+            <source src="" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </li>
+        </script>
+
+        <script id="search-artist-item-tmpl" type="text/x-handlebars-template">
+                <a href="#" class="thumbnail">
+                    <img data-src="" alt="..." class="js-artist-img">
+                </a>
+                <div class="caption" style="text-align:center">
+                    <h5>{{name}}</h5>
+                </div>
+        </script>
+
+        <script id="search-artist-list-tmpl" type="text/x-handlebars-template">
+            <h3><span class="label label-default">Artists</span></h3>
+            <div class='row'></div>
+        </script>
+
+        <script id="track-item-tmpl" type="text/x-handlebars-template">
+                <td>{{track_number}}</td><td><i class="fa fa-play-circle-o fa-2x"></i></td><td>{{name}}</td><td>{{songLength duration_ms}}</td><td><i class="fa fa-star-o"></i></td>
+        </script>
+
+        <script id="track-list-tmpl" type="text/x-handlebars-template">
+        <div class="row">
+
+              <a class="col-xs-4 col-md-1" href="#">
+                <img class="thumbnail" src="..." alt="...">
+              </a>
+              <h4 class="media-heading">{{name}}</h4>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <table class="table table-striped table-hover">
+            <thead ><tr><th></th><th></th><th>Name</th><th><i class="fa fa-clock-o"></i></th></tr></thead>
+                <tbody class="track-list"></tbody>
+            </table>
+            </div>
+            <hr>
+            </div>
+        </div>
+        </script>
+
+
+        <script id="album-container-tmpl" type="text/x-handlebars-template">
+                <h3><span class="label label-default">Tracks</span></h3>
+        </script>
+
+        <script id="display-layout-tmpl" type="text/x-handlebars-template">
+            <div id="artistListRegion"></div>
+            <div id="trackListRegion"></div>
+
+
+        </script>
+
+         <script id="loader-tmpl" type="text/x-handlebars-template">
+         <div class="row">
+         <div class="col-md-4"></div>
+            <div class="col-md-4"><i class="fa fa-cog fa-5x fa-spin"></i></div>
+             <div class="col-md-4"></div>
+         </div>
+        </script>
+
+
 
         <script>
         $(document).ready(function() {
