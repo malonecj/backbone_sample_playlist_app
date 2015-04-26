@@ -1,4 +1,4 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+$icon-font-path: "../bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
 
@@ -118,9 +118,9 @@ body {
 }
 .navbar a.logo {
     font-weight : 400;
-    font-size : xx-large;
+    font-size : large;
     color:white;
-    font-family:'Lobster', cursive
+    padding-left:50px
 }
 .main {
     padding : 20px;

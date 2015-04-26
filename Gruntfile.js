@@ -24,9 +24,15 @@ module.exports = function (grunt) {
         app: 'app',
         dist: 'dist'
     };
-
+    grunt.loadNpmTasks('grunt-gh-pages');
     grunt.initConfig({
         yeoman: yeomanConfig,
+        'gh-pages': {
+            options: {
+                base: 'dist'
+            },
+            src: ['**']
+        },
         watch: {
             options: {
                 nospawn: true,
@@ -304,6 +310,8 @@ module.exports = function (grunt) {
             return grunt.task.run(testTasks);
         }
     });
+
+
 
     grunt.registerTask('build', [
         'clean:dist',
