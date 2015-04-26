@@ -5,7 +5,8 @@
         searchBoxRegion: "#searchBoxRegion",
         sidebarRegion: "#sidebarRegion",
         mainRegion: "#mainRegion",
-        footerRegion: '#footerRegion'
+        footerRegion: '#footerRegion',
+        loaderRegion: '#loaderRegion'
     });
 
     w.PlaylistApp = PlaylistApp;
