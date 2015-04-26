@@ -9,7 +9,7 @@
 
         App.vent.on('search:complete', function(searchResults){
             if(searchResults.artists){
-                var artistsWithImages = _.filter(searchResults.artists.items, function(a){ return a.images.length > 0});
+                var artistsWithImages = _.first(_.filter(searchResults.artists.items, function(a){ return a.images.length > 0}), 1);
                 var artists = new Backbone.Collection(artistsWithImages);
                 controller.displayArtists(artists);
             }
