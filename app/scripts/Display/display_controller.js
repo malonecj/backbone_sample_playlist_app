@@ -6,7 +6,6 @@
             initialize: function(options) {
                 this.layout = new Display.Views.Layout();
                 App.mainRegion.show(this.layout);
-
             },
 
             displayArtists: function(artists) {
